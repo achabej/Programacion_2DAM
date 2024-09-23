@@ -110,10 +110,16 @@ public class GesEmpresa extends JFrame{
                         CheckButtons();
                     }
                     catch(ParseException ex){
-                        JOptionPane.showMessageDialog(null, "La fecha introducida tiene el formato incorrecto (dd/mm/yyyy)", "Error", JOptionPane.INFORMATION_MESSAGE);
+                        //Excepcion para cuando no se añaden los datos necesarios
+                        if(nombreField.getText().isEmpty() || fechaNacField.getText().isEmpty() || salarioField.getText().isEmpty())
+                            JOptionPane.showMessageDialog(null, "No se ha introducido los datos necesarios", "Error", JOptionPane.INFORMATION_MESSAGE);
+                        else
+                            //Excepcion de fecha incorrecta
+                            JOptionPane.showMessageDialog(null, "La fecha introducida tiene el formato incorrecto (dd/mm/yyyy)", "Error", JOptionPane.INFORMATION_MESSAGE);
 
                     }
                     catch(NumberFormatException ex){
+                        //Excepcion de formato salario
                         JOptionPane.showMessageDialog(null, "El salario no es un número o no tiene el formato correcto", "Error", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
